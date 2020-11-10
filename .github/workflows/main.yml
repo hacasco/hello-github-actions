@@ -6,7 +6,7 @@ jobs:
       runs-on: ubuntu-latest
       steps:
         - name: Principal
-        uses: actions/checkout@v2
-        run: Write-Host "hola"
-        shell: pwsh
+          uses: actions/checkout@v2
+          run: Write-Host "hola"
+          shell: pwsh
 
