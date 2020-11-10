@@ -8,6 +8,6 @@ jobs:
         uses: actions/checkout@v2
 
         - name: Principal
-          run: Write-Host "hola"
-          shell: pwsh
+        run: Write-Host "hola"
+        shell: pwsh
 
