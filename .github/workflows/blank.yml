@@ -39,7 +39,7 @@ jobs:
           echo test, and deploy your project.
 
       - name: Stack Name
-        run: $Env:stackName = ${{ env.stackName }}
+        run: $Env:stackName = "${{ env.stackName }}"
         shell: pwsh
 
       - name: Leer el secreto
