@@ -47,7 +47,7 @@ jobs:
         shell: pwsh
 
       - name: Leer el stack
-        run: Write-Host "pilai es $Env:pila"
+        run: ./a.ps1
         shell: pwsh
 
 
