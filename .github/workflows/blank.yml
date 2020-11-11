@@ -43,7 +43,7 @@ jobs:
         shell: pwsh
 
       - name: Secreto
-        run: Write-Host 'El secreto es ${{ env.secreto }}'
+        run: Write-Host 'El kany es ${{ env.secreto }}'
         shell: pwsh
 
 
