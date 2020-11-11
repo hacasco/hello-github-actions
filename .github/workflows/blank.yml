@@ -39,7 +39,7 @@ jobs:
           echo test, and deploy your project.
 
       - name: Stack Name
-        run: [Environment]::SetEnvironmentVariable("pila", ${{ env.stackName }})
+        run: "[Environment]::SetEnvironmentVariable('pila', ${{ env.stackName }})"
         shell: pwsh
 
       - name: Leer el secreto
