@@ -12,6 +12,10 @@ on:
   pull_request:
     branches: [ master ]
 
+env:
+  stackName: Bootstrap
+  secreto: ${{secrets.COGNITO_PASSWORD}}
+
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
@@ -34,6 +38,12 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
 
-      - name: Principal
-        run: git branch --show-current
+      - name: Stack Name
+        run: Write-Host 'La pila es: ${{ env.stackName }}'
         shell: pwsh
+
+      - name: Secreto
+        run: Write-Host 'El secreto es: ${{ env.secreto }}'
+        shell: pwsh
+
+
