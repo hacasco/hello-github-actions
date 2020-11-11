@@ -39,11 +39,15 @@ jobs:
           echo test, and deploy your project.
 
       - name: Stack Name
-        run: Write-Host 'La pila es $Env:stackName'
+        run: $Env:stackName = ${{ env.stackName }}
         shell: pwsh
 
-      - name: Secreto
+      - name: Leer el secreto
         run: Write-Host 'El kany es ${{ env.secreto }}'
+        shell: pwsh
+
+      - name: Leer el stack
+        run: Write-Host 'pilai es $Env:stackName'
         shell: pwsh
 
 
