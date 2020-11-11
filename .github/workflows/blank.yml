@@ -43,11 +43,11 @@ jobs:
         shell: pwsh
 
       - name: Leer el secreto
-        run: Write-Host 'El kany es ${{ env.secreto }}'
+        run: Write-Host "El kany es ${{ env.secreto }}"
         shell: pwsh
 
       - name: Leer el stack
-        run: Write-Host 'pilai es $Env:pila'
+        run: Write-Host "pilai es $Env:pila"
         shell: pwsh
 
 
