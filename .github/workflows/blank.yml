@@ -41,7 +41,7 @@ jobs:
         shell: pwsh
 
       - name: Checqueando Antes
-        uses: LouisBrunner/checks-action@v0.1.0
+        uses: LouisBrunner/checks-action@v1.1.1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           name: Probando A antes
@@ -52,7 +52,7 @@ jobs:
         shell: pwsh
 
       - name: Checqueando Despues
-        uses: LouisBrunner/checks-action@v0.1.0
+        uses: LouisBrunner/checks-action@v1.1.1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           name: Probando A Despues
