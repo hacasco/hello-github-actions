@@ -42,11 +42,13 @@ jobs:
 
       - name: Leer el stack
         uses: LouisBrunner/checks-action@v0.1.0
-          with:
-            name: Probando A
-            conclusion: ${{ job.status }}
-            output: |
-              {"summary":${{ steps.test.outputs.summary }}}            
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          name: Probando A
+          status: in_progress
+          conclusion: ${{ job.status }}
+          output: |
+            {"summary":${{ steps.test.outputs.summary }}}            
         run: ./a.ps1
         shell: pwsh
 
