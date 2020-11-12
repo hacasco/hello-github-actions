@@ -59,3 +59,22 @@ jobs:
           status: completed
           conclusion: ${{ job.status }}
 
+      - name: Checqueando Antes
+        uses: LouisBrunner/checks-action@v1.1.1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          name: Probando B
+          status: in_progress
+
+      - name: Leer el stack
+        run: ./b.ps1
+        shell: pwsh
+
+      - name: Checqueando Despues
+        uses: LouisBrunner/checks-action@v1.1.1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          name: Probando B
+          status: completed
+          conclusion: ${{ job.status }}
+
