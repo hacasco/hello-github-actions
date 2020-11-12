@@ -46,7 +46,6 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           name: Probando A antes
           status: in_progress
-          conclusion: ${{ job.status }}
 
       - name: Leer el stack
         run: ./a.ps1
@@ -57,6 +56,6 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           name: Probando A Despues
-          status: in_progress
+          status: completed
           conclusion: ${{ job.status }}
 
