@@ -1,1 +1,3 @@
-Write-Host "pilai es $Env:pila"
+Write-Host "Inicio"
+Start-Sleep -s 10
+Write-Host "Opa"
