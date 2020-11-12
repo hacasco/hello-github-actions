@@ -36,8 +36,12 @@ jobs:
         run: "[Environment]::SetEnvironmentVariable('pila', '${{ env.stackName }}')"
         shell: pwsh
 
-      - name: Leer el secreto
+      - name: Leer el maera
         run: Write-Host "El kany es ${{ env.secreto }}"
+        shell: pwsh
+
+      - name: Leer el stack
+        run: ./a.ps1
         shell: pwsh
 
       - name: Leer el stack
@@ -49,7 +53,4 @@ jobs:
           conclusion: ${{ job.status }}
           output: |
             {"summary":${{ steps.test.outputs.summary }}}            
-        run: ./a.ps1
-        shell: pwsh
-
 
