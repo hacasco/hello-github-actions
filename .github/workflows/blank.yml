@@ -44,7 +44,7 @@ jobs:
         uses: LouisBrunner/checks-action@v1.1.1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          name: Probando A antes
+          name: Probando A
           status: in_progress
 
       - name: Leer el stack
@@ -55,7 +55,7 @@ jobs:
         uses: LouisBrunner/checks-action@v1.1.1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          name: Probando A Despues
+          name: Probando A
           status: completed
           conclusion: ${{ job.status }}
 
