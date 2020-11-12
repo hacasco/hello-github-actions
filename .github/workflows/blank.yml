@@ -75,6 +75,5 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           name: Probando B
-          status: completed
           conclusion: ${{ job.status }}
 
