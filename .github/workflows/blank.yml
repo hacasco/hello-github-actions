@@ -40,15 +40,23 @@ jobs:
         run: Write-Host "El kany es ${{ env.secreto }}"
         shell: pwsh
 
+      - name: Checqueando Antes
+        uses: LouisBrunner/checks-action@v0.1.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          name: Probando A antes
+          status: in_progress
+          conclusion: ${{ job.status }}
+
       - name: Leer el stack
         run: ./a.ps1
         shell: pwsh
 
-      - name: Checqueando
+      - name: Checqueando Despues
         uses: LouisBrunner/checks-action@v0.1.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          name: Probando A
+          name: Probando A Despues
           status: in_progress
           conclusion: ${{ job.status }}
 
