@@ -48,8 +48,8 @@ jobs:
           name: Probando A
           status: in_progress
 
-      - name: Leer el stack
-        id: leer-stack
+      - name: Leer el stack A
+        id: leer-stack-a
         run: ./a.ps1
         shell: pwsh
 
@@ -58,29 +58,29 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           name: Probando A
-          conclusion: ${{ steps.leer-stack.outcome }}
+          conclusion: ${{ steps.leer-stack-a.outcome }}
 
 
 
 
-      - name: Checqueando Antes
+      - name: Chequeando Antes
         uses: LouisBrunner/checks-action@v1.1.1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           name: Probando B
           status: in_progress
 
-      - name: Leer el stack
-        run: ./b.ps1
+      - name: Leer el stack B
+        id: leer-stack-b
         shell: pwsh
 
-      - name: Checqueando Despues
+      - name: Chequeando Despues
         if: failure()
         uses: LouisBrunner/checks-action@v1.1.1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           name: Probando B
-          conclusion: ${{ steps.leer-stack.outcome }}
+          conclusion: ${{ steps.leer-stack-b.outcome }}
 
 
 
