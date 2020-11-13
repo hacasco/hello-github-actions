@@ -72,6 +72,7 @@ jobs:
 
       - name: Leer el stack B
         id: leer-stack-b
+        run: ./b.ps1
         shell: pwsh
 
       - name: Chequeando Despues
