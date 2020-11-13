@@ -58,7 +58,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           name: Probando A
-          conclusion: steps.leer-stack.outcome
+          conclusion: ${{ steps.leer-stack.outcome }}
 
 
 
