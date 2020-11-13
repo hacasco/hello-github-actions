@@ -77,3 +77,7 @@ jobs:
           name: Probando B
           conclusion: ${{ job.status }}
 
+      - name: Siempre corre
+        if: always()
+        run: Write-Host 'Haciendo limpieza'
+        shell: pwsh
