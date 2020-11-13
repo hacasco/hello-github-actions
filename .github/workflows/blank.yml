@@ -63,25 +63,24 @@ jobs:
 
 
 
-      # - name: Checqueando Antes
-      #   uses: LouisBrunner/checks-action@v1.1.1
-      #   with:
-      #     token: ${{ secrets.GITHUB_TOKEN }}
-      #     name: Probando B
-      #     status: in_progress
+      - name: Checqueando Antes
+        uses: LouisBrunner/checks-action@v1.1.1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          name: Probando B
+          status: in_progress
 
-      # - name: Leer el stack
-      #   run: ./b.ps1
-      #   shell: pwsh
+      - name: Leer el stack
+        run: ./b.ps1
+        shell: pwsh
 
-      # - name: Checqueando Despues
-      #   if: failure()
-      #   uses: LouisBrunner/checks-action@v1.1.1
-      #   with:
-      #     token: ${{ secrets.GITHUB_TOKEN }}
-      #     name: Probando B
-      #     status: failed
-      #     conclusion: ${{ job.status }}
+      - name: Checqueando Despues
+        if: failure()
+        uses: LouisBrunner/checks-action@v1.1.1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          name: Probando B
+          conclusion: ${{ steps.leer-stack.outcome }}
 
 
 
