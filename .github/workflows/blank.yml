@@ -85,6 +85,28 @@ jobs:
 
 
 
+      - name: Chequeando Antes
+        uses: LouisBrunner/checks-action@v1.1.1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          name: Probando C
+          status: in_progress
+
+      - name: Leer el stack C
+        id: leer-stack-c
+        run: Write-Host "paso C"
+        shell: pwsh
+
+      - name: Chequeando Despues
+        if: failure()
+        uses: LouisBrunner/checks-action@v1.1.1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          name: Probando B
+          conclusion: ${{ steps.leer-stack-c.outcome }}
+
+
+
 
       - name: Siempre corre
         if: always()
