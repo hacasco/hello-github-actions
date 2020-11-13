@@ -99,11 +99,11 @@ jobs:
         shell: pwsh
 
       - name: Chequeando Despues
-        if: failure()
+        if: always()
         uses: LouisBrunner/checks-action@v1.1.1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          name: Probando B
+          name: Probando C
           conclusion: ${{ steps.leer-stack-c.outcome }}
 
 
