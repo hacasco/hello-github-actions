@@ -36,10 +36,12 @@ jobs:
         shell: pwsh
 
       - name: Leer el maera
-        run: Write-Host "El kany es ${{ env.secreto }}"
+        run: |
+          Write-Host "El kany es ${{ env.secreto }}"
+          Start-Sleep -s 10
         shell: pwsh
 
-      - name: Checqueando Antes
+      - name: Chequeando Antes
         uses: LouisBrunner/checks-action@v1.1.1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -47,36 +49,42 @@ jobs:
           status: in_progress
 
       - name: Leer el stack
+        id: leer-stack
         run: ./a.ps1
         shell: pwsh
 
-      - name: Checqueando Despues
+      - name: Chequeando Despues
         uses: LouisBrunner/checks-action@v1.1.1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           name: Probando A
-          status: completed
-          conclusion: ${{ job.status }}
+          conclusion: steps.leer-stack.outcome
 
-      - name: Checqueando Antes
-        uses: LouisBrunner/checks-action@v1.1.1
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          name: Probando B
-          status: in_progress
 
-      - name: Leer el stack
-        run: ./b.ps1
-        shell: pwsh
 
-      - name: Checqueando Despues
-        if: failure()
-        uses: LouisBrunner/checks-action@v1.1.1
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          name: Probando B
-          status: failed
-          conclusion: ${{ job.status }}
+
+      # - name: Checqueando Antes
+      #   uses: LouisBrunner/checks-action@v1.1.1
+      #   with:
+      #     token: ${{ secrets.GITHUB_TOKEN }}
+      #     name: Probando B
+      #     status: in_progress
+
+      # - name: Leer el stack
+      #   run: ./b.ps1
+      #   shell: pwsh
+
+      # - name: Checqueando Despues
+      #   if: failure()
+      #   uses: LouisBrunner/checks-action@v1.1.1
+      #   with:
+      #     token: ${{ secrets.GITHUB_TOKEN }}
+      #     name: Probando B
+      #     status: failed
+      #     conclusion: ${{ job.status }}
+
+
+
 
       - name: Siempre corre
         if: always()
