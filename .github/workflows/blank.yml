@@ -93,6 +93,7 @@ jobs:
           status: in_progress
 
       - name: Leer el stack C
+        if: always()
         id: leer-stack-c
         run: Write-Host "paso C"
         shell: pwsh
