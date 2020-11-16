@@ -69,7 +69,7 @@ jobs:
 
       - name: Leer el stack B
         id: leer-stack-b
-        run: Write-Host ${{join(steps.leer-stack-a.outputs.*, '\n')}}
+        run: Write-Host ${{ steps.leer-stack-a.outputs.opa }}
         shell: pwsh
 
       - name: Chequeando Despues
