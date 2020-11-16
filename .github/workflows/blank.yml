@@ -41,51 +41,30 @@ jobs:
           Start-Sleep -s 10
         shell: pwsh
 
-      - name: Chequeando Antes
-        uses: LouisBrunner/checks-action@v1.1.1
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          name: Probando A
-          status: in_progress
-
       - name: Leer el stack A
         id: leer-stack-a
         run: ./a.ps1
         shell: pwsh
 
-      - name: Chequeando Despues
+      - name: Resultado Stack A
         uses: LouisBrunner/checks-action@v1.1.1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          name: Probando A
+          name: Resultado Stack A
           conclusion: ${{ steps.leer-stack-a.outcome }}
-
-      - name: Chequeando Antes
-        uses: LouisBrunner/checks-action@v1.1.1
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          name: Probando B
-          status: in_progress
 
       - name: Leer el stack B
         id: leer-stack-b
         run: Write-Host ${{ steps.leer-stack-a.outputs.opa }}
         shell: pwsh
 
-      - name: Chequeando Despues
+      - name: Resultado Stack B
         if: failure()
         uses: LouisBrunner/checks-action@v1.1.1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          name: Probando B
+          name: Resultado Stack B
           conclusion: ${{ steps.leer-stack-b.outcome }}
-
-      - name: Chequeando Antes
-        uses: LouisBrunner/checks-action@v1.1.1
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          name: Probando C
-          status: in_progress
 
       - name: Leer el stack C
         if: always()
@@ -93,12 +72,12 @@ jobs:
         run: Write-Host "paso C"
         shell: pwsh
 
-      - name: Chequeando Despues
+      - name: Resultado Stack C
         if: always()
         uses: LouisBrunner/checks-action@v1.1.1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          name: Probando C
+          name: Resultado Stack C
           conclusion: ${{ steps.leer-stack-c.outcome }}
 
       - name: Siempre corre
