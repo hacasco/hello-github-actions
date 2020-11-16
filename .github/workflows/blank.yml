@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
     branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
 env:
   stackName: Bootstrap
@@ -60,9 +60,6 @@ jobs:
           name: Probando A
           conclusion: ${{ steps.leer-stack-a.outcome }}
 
-
-
-
       - name: Chequeando Antes
         uses: LouisBrunner/checks-action@v1.1.1
         with:
@@ -72,7 +69,7 @@ jobs:
 
       - name: Leer el stack B
         id: leer-stack-b
-        run: ./b.ps1
+        run: Write-Host ${{ steps.leer-stack-a.outputs }}
         shell: pwsh
 
       - name: Chequeando Despues
@@ -82,8 +79,6 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           name: Probando B
           conclusion: ${{ steps.leer-stack-b.outcome }}
-
-
 
       - name: Chequeando Antes
         uses: LouisBrunner/checks-action@v1.1.1
@@ -105,9 +100,6 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           name: Probando C
           conclusion: ${{ steps.leer-stack-c.outcome }}
-
-
-
 
       - name: Siempre corre
         if: always()
