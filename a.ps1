@@ -1,5 +1,5 @@
 Write-Host "Inicio"
 Start-Sleep -s 10
-Write-Host "Opa"
+Write-Host "Opa 10 segundos"
 
-echo "::set-output name=opa::bien"
+Write-Output "::set-output name=opa::bien"

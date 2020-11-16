@@ -55,7 +55,7 @@ jobs:
 
       - name: Leer el stack B
         id: leer-stack-b
-        run: Write-Host ${{ steps.leer-stack-a.outputs.opa }}
+        run: ./b.ps1 ${{ steps.leer-stack-a.outputs.opa }}
         shell: pwsh
 
       - name: Resultado Stack B
