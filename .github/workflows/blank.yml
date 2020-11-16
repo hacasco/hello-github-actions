@@ -46,7 +46,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           name: Probando A
-          status: in_progress
+          status: ${{ steps.leer-stack-a.outcome }}
 
       - name: Leer el stack A
         id: leer-stack-a
