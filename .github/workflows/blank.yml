@@ -59,7 +59,7 @@ jobs:
         shell: pwsh
 
       - name: Resultado Stack B
-        if: failure()
+        if: steps.leer-stack-a.outputs.opa == 'true'
         uses: LouisBrunner/checks-action@v1.1.1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
