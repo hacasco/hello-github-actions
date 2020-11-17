@@ -9,8 +9,7 @@ on:
     branches: [master]
   pull_request:
     branches: [master]
-    branches-ignore: 
-      - 'pca/**'
+
 env:
   stackName: Bootstrap
   secreto: ${{secrets.COGNITO_PASSWORD}}
