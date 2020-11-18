@@ -50,7 +50,7 @@ jobs:
         uses: LouisBrunner/checks-action@v1.1.1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          name: Resultado Stack A
+          name: 2- Resultado Stack A
           conclusion: ${{ steps.leer-stack-a.outcome }}
 
       - name: Leer el stack B
@@ -63,7 +63,7 @@ jobs:
         uses: LouisBrunner/checks-action@v1.1.1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          name: Resultado Stack B
+          name: 3- Resultado Stack B
           conclusion: ${{ steps.leer-stack-b.outcome }}
 
       - name: Leer el stack C
@@ -77,7 +77,7 @@ jobs:
         uses: LouisBrunner/checks-action@v1.1.1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          name: Resultado Stack C
+          name: 1- Resultado Stack C
           conclusion: ${{ steps.leer-stack-c.outcome }}
 
       - name: Siempre corre
