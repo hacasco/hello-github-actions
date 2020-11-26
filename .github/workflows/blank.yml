@@ -9,6 +9,11 @@ on:
     branches: [master]
   pull_request:
     branches: [master]
+  workflow_run:
+    workflows: ["Workflow Limpieza"]
+    #branches: [master]
+    types:
+      - completed
 
 env:
   stackName: Bootstrap

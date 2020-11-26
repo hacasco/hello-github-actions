@@ -2,13 +2,6 @@
 
 name: Workflow Limpieza
 
-on:
-  workflow_run:
-    workflows: ["Blank Workflow"]
-    #branches: [master]
-    types:
-      - completed
-
 env:
   stackName: Bootstrap
   secreto: ${{secrets.COGNITO_PASSWORD}}
