@@ -1,35 +1,86 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: Blank Workflow
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
 on:
   workflow_dispatch:
     branches: [master]
-  push:
-    branches: [ master ]
   pull_request:
-    branches: [ master ]
+    branches: [master]
+
+env:
+  stackName: Bootstrap
+  secreto: ${{secrets.COGNITO_PASSWORD}}
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
-  build:
+  Jobcito:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
+    if: github.event.pull_request.draft == false
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
+      - name: Build
+        run: Write-Host "build...ing"
+        shell: pwsh
 
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
+      - name: UTs
+        run: "[Environment]::SetEnvironmentVariable('pila', '${{ env.stackName }}')"
+        shell: pwsh
+
+      - name: Leer el maera
         run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+          Write-Host "El kany es ${{ env.secreto }}"
+          Start-Sleep -s 10
+        shell: pwsh
+
+      - name: Leer el stack A
+        id: leer-stack-a
+        run: ./a.ps1
+        shell: pwsh
+
+      - name: Resultado Stack A
+        uses: LouisBrunner/checks-action@v1.1.1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          name: 2- Resultado Stack A
+          conclusion: ${{ steps.leer-stack-a.outcome }}
+
+      - name: Leer el stack B
+        id: leer-stack-b
+        run: ./b.ps1 ${{ steps.leer-stack-a.outputs.opa }}
+        shell: pwsh
+
+      - name: Resultado Stack B
+        if: steps.leer-stack-a.outputs.opa == 'true'
+        uses: LouisBrunner/checks-action@v1.1.1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          name: 3- Resultado Stack B
+          conclusion: ${{ steps.leer-stack-b.outcome }}
+
+      - name: Leer el stack C
+        if: always()
+        id: leer-stack-c
+        run: Write-Host "paso C"
+        shell: pwsh
+
+      - name: Resultado Stack C
+        if: always()
+        uses: LouisBrunner/checks-action@v1.1.1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          name: 1- Resultado Stack C
+          conclusion: ${{ steps.leer-stack-c.outcome }}
+
+      - name: Siempre corre
+        if: always()
+        run: Write-Host 'Haciendo limpieza'
+        shell: pwsh

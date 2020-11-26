@@ -1,0 +1,37 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Workflow Limpieza
+
+on:
+  workflow_run:
+    workflows: ["Blank Workflow"]
+    branches: [master]
+    types:
+      - completed
+
+env:
+  stackName: Bootstrap
+  secreto: ${{secrets.COGNITO_PASSWORD}}
+
+jobs:
+  Job-Limpieza:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      - name: El unico paso
+        id: unico
+        run: |
+          Write-Host $(Get-Date) -NoNewline
+          Write-Host ': este es el unico paso'
+        shell: pwsh
+
+      - name: El check del unico paso
+        if: always()
+        uses: LouisBrunner/checks-action@v1.1.1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          name: El unico paso.
+          conclusion: ${{ steps.unico.outcome }}
