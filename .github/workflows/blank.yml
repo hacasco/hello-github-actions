@@ -66,10 +66,16 @@ jobs:
           name: 3- Resultado Stack B
           conclusion: ${{ steps.leer-stack-b.outcome }}
 
-      - name: Leer el stack C
+      - name: LLamar a limpieza
         if: always()
         id: leer-stack-c
-        run: Write-Host "paso C"
+        run: |
+          curl \
+          -X POST \
+          -H "Accept: application/vnd.github.v3+json" \
+          -H 'authorization: Bearer ${{ secrets.CLEANING }}' \
+          https://api.github.com/repos/hacasco/hello-github-actions/dispatches \
+          -d '{"event_type":"cleaning", "client_payload": {"var": 123}}'
         shell: pwsh
 
       - name: Resultado Stack C
