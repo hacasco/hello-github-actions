@@ -6,7 +6,7 @@ on:
   workflow_run:
     workflows: ["Blank Workflow"]
     branches:
-      - **
+      - '**'
     types:
       - completed
 
