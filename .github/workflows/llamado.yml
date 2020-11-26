@@ -5,7 +5,8 @@ name: Workflow Limpieza
 on:
   workflow_run:
     workflows: ["Blank Workflow"]
-    branches: [**]
+    branches:
+      - **
     types:
       - completed
 
