@@ -4,6 +4,7 @@ name: Workflow Limpieza
 
 on:
   workflow_run:
+    workflows: ["Blank Workflow"]
     #branches: [master]
     types:
       - completed
@@ -22,7 +23,9 @@ jobs:
 
       - name: El unico paso
         id: unico
-        run: Write-Host "este es el unico paso"
+        run: |
+          Write-Host $(Get-Date) -NoNewline
+          Write-Host ': este es el unico paso'
         shell: pwsh
 
       - name: El check del unico paso
