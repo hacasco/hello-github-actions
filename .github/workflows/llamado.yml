@@ -25,7 +25,7 @@ jobs:
         id: unico
         run: |
           Write-Host $(Get-Date) -NoNewline
-          Write-Host ': este es el unico paso de otro-2'
+          Write-Host ': este es el unico paso de otro-2222'
         shell: pwsh
 
       - name: El check del unico paso
