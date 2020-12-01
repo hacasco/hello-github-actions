@@ -75,7 +75,7 @@ jobs:
           -H "Accept: application/vnd.github.v3+json" `
           -H 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' `
           https://api.github.com/repos/hacasco/hello-github-actions/dispatches `
-          -d '{ "event_type": "cleaning", "client_payload": { "var": "el_que_llama" } }'
+          -d '{ ""event_type"": ""cleaning"", ""client_payload"": { ""var"": ""el_que_llama"" } }'
         shell: pwsh
 
       - name: Resultado Stack C
