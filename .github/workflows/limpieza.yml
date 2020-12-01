@@ -22,7 +22,7 @@ jobs:
         id: unico
         run: |
           Write-Host $(Get-Date) -NoNewline
-          Write-Host ${{ github.event.cleaning.var }}
+          Write-Host ${{ github.event.client_payload.var }}
         shell: pwsh
 
       - name: El check del unico paso
