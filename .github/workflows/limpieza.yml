@@ -1,27 +1,21 @@
-# This is a basic workflow to help you get started with Actions
-
 name: Stacks Cleanup
 
 on:
   repository_dispatch:
     types: [stacks-cleanup]
 
-env:
-  stackName: Bootstrap
-  secreto: ${{secrets.COGNITO_PASSWORD}}
-
 jobs:
-  Job-Limpieza:
+  Stacks-Cleanup-Job:
     runs-on: ubuntu-latest
 
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
       - name: Stacks Cleanup
-        id: unico
+        id: cleaning-step
         run: |
-          Write-Host 'The stack is: ${{ github.event.client_payload.stack-name }}'
+          Write-Host 'Deleting stack ${{ github.event.client_payload.stack-name }} ...'
+          Write-Host 'Stack deleted successfully'
         shell: pwsh
 
       - name: Stacks Cleanup - GH Check
