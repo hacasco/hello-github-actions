@@ -4,7 +4,7 @@ name: Stacks Cleanup
 
 on:
   repository_dispatch:
-    types: [cleaning]
+    types: [stacks-cleanup]
 
 env:
   stackName: Bootstrap
@@ -18,17 +18,16 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      - name: El unico paso
+      - name: Stacks Cleanup
         id: unico
         run: |
-          Write-Host $(Get-Date) -NoNewline
-          Write-Host ${{ github.event.client_payload.var }}
+          Write-Host 'The stack is: ${{ github.event.client_payload.stack-name }}'
         shell: pwsh
 
-      - name: El check del unico paso
+      - name: Stacks Cleanup - GH Check
         if: always()
         uses: LouisBrunner/checks-action@v1.1.1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          name: El unico paso.
+          name: Stacks Cleanup.
           conclusion: ${{ steps.unico.outcome }}
