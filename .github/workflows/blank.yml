@@ -74,7 +74,7 @@ jobs:
           -X POST `
           -H "Accept: application/vnd.github.v3+json" `
           -H 'authorization: Bearer ${{ secrets.CLEANING_ACCESS  }}' `
-          https://api.github.com/repos/hacasco/hello-github-actions/dispatches `
+          https://api.github.com/repos/trilogy-group/devfactory-cloudcrm-bootstrap/dispatches `
           -d '{ ""event_type"": ""stacks-cleanup"", ""client_payload"": { ""stack-name"": ""DummyStack"" } }'
         shell: pwsh
 
