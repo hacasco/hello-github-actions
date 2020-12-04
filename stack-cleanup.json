@@ -1,0 +1,7 @@
+{
+  "event_type": "stacks-cleanup",
+  "client_payload": {
+    "stack-name": "STACK_NAME",
+    "bucket-name": "S3_BUCKET_NAME"
+  }
+}

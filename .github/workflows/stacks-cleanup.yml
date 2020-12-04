@@ -15,13 +15,6 @@ jobs:
         id: cleaning-step
         run: |
           Write-Host 'Deleting stack ${{ github.event.client_payload.stack-name }} ...'
+          Write-Host 'Deleting stack ${{ github.event.client_payload.bucket-name }} ...'
           Write-Host 'Stack deleted successfully'
         shell: pwsh
-
-      - name: Stacks Cleanup - GH Check
-        if: always()
-        uses: LouisBrunner/checks-action@v1.1.1
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          name: Stacks Cleanup.
-          conclusion: ${{ steps.unico.outcome }}

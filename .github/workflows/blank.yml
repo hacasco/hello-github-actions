@@ -70,12 +70,15 @@ jobs:
         if: always()
         id: leer-stack-c
         run: |
-          curl `
-          -X POST `
-          -H "Accept: application/vnd.github.v3+json" `
-          -H 'authorization: Bearer ${{ secrets.CLEANING_ACCESS  }}' `
-          https://api.github.com/repos/trilogy-group/devfactory-cloudcrm-bootstrap/dispatches `
-          -d '{ ""event_type"": ""stacks-cleanup"", ""client_payload"": { ""stack-name"": ""DummyStack"" } }'
+          . ./delete-stack-functions.ps1
+          DispatchToCleaner -StackName 'pila' -S3BucketName 'balde' -CleaningToken '${{ secrets.CLEANING_ACCESS }}'
+        # run: |
+        #   curl `
+        #   -X POST `
+        #   -H "Accept: application/vnd.github.v3+json" `
+        #   -H 'authorization: Bearer ${{ secrets.CLEANING_ACCESS  }}' `
+        #   https://api.github.com/repos/trilogy-group/devfactory-cloudcrm-bootstrap/dispatches `
+        #   -d '{ ""event_type"": ""stacks-cleanup"", ""client_payload"": { ""stack-name"": ""DummyStack"" } }'
         shell: pwsh
 
       - name: Resultado Stack C
