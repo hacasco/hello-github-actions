@@ -77,6 +77,7 @@ function DispatchToCleaner {
     [string] $appJson = Get-Content -Path ./stack-cleanup.json -Encoding utf8
     $appJson = $appJson.Replace("STACK_NAME", $StackName)
     $appJson = $appJson.Replace("S3_BUCKET_NAME", $S3BucketName)
+    # this is required for pwsh to correctly parse json
     $appJson = $appJson.Replace('"', '""')
 
     Write-Host $appJson

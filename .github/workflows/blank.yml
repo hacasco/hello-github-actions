@@ -43,7 +43,9 @@ jobs:
 
       - name: Leer el stack A
         id: leer-stack-a
-        run: ./a.ps1
+        run: |
+          $esVerdad = $true
+          Write-Host "Es verdad: $esVerdad"
         shell: pwsh
 
       - name: Resultado Stack A
